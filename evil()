@@ -1,0 +1,46 @@
+defination:The eval() allows us to execute arbitrary strings as Python code. It accepts a source string and returns an object.
+Explsnstion:
+if you do not understnad by the definition, don't worry after completing examples you will understand it clearly:
+so ,lets start 
+1)lets see how it convert strings into python code:
+Question : a and b are two integers you need to perform following arithmetic operations on a and b
+ a+b
+ a-b
+ a*b
+ a/b
+ a%b
+ 
+solution:1)
+first see ordaniry method:
+a=int(input())
+b=int(input())
+print(a+b)
+print(a-b)
+print(a*b)
+print(a/b)
+print(a%b)
+
+
+Solution:2
+now use evil()                       explanation:
+a,b=eval("input()," *2)             #as you know any string can be multiply by integers eg. "bac,"*2= bac,bac,#"ab",*3="ab,"ab,"ab,"
+for i in "+-*/%":                    #so after multiplication a,b=eval("input(),"input(),") and then eval converts it into
+ print(eval(f"{int(a)}{i}{int(b)}"))   #a,b=input(),input(), so   a,b=eval("input()," *2)--->a,b=a,b=input(),input(),
+                                        #print(eval(f"{int(a)}{i}{int(b)}"))------>print(a+b) for first valure i,and value of i 
+                                         will be chaged to - ,*,/,% and result will be printed
+
+Solution3)
+using list comprehension:
+a,b=eval("input()," *2)
+print(*[eval(f"{int(a)}{i}{int(b)}") for i in "+-*/%"],sep="\n")
+
+input for all solution:
+22
+15
+output for all solution:
+37
+7
+330
+1.4666666666666666
+7
+try it out!
